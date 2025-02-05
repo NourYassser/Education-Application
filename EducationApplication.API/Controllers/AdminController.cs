@@ -16,23 +16,25 @@ namespace EducationApplication.API.Controllers
         public AdminController(IinstructorManager mngINS, IStudentManager mngSTU)
         {
             _mngINS = mngINS;
-            _mngSTU = _mngSTU;
+            _mngSTU = mngSTU;
         }
-        [HttpGet]
+        [HttpGet("GetInstructors")]
         public IActionResult GetInstructors()
         {
             return Ok(_mngINS.GetAllInstructorsAsync());
         }
+        [HttpGet("GetStudents")]
         public IActionResult GetStudents()
         {
             return Ok(_mngSTU.GetAllStudentsAsync());
         }
-        [HttpPost]
+        [HttpPost("AddInstructors")]
         public IActionResult AddInstructors(InstructorAddDto dto)
         {
             _mngINS.AddInstructorAsync(dto);
             return NoContent();
         }
+        [HttpPost("AddStudents")]
         public IActionResult AddStudents(StudentAddDto dto)
         {
             _mngSTU.AddStudentAsync(dto);
