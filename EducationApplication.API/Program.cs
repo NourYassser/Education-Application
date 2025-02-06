@@ -29,10 +29,14 @@ builder.Services.AddDbContext<EducationDbContext>(options =>
 
 builder.Services.AddAutoMapper(map => map.AddProfile(new MappingProfile()));
 
-//Identity
+//Identity Role
 builder.Services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<EducationDbContext>()
                 .AddDefaultTokenProviders();
+
+//Identity User
+/*builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+                .AddEntityFrameworkStores<EducationDbContext>();*/
 //Registering Repos
 /*builder.Services.AddScoped<IAdminRepositroy, AdminRepositroy>();*/
 builder.Services.AddScoped<IinstructorRpo, InstructorRpo>();
