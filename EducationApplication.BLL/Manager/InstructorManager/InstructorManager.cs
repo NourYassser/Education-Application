@@ -35,7 +35,7 @@ namespace EducationApplication.BLL.Manager.InstructorManager
         public void AddInstructorAsync(InstructorAddDto dto)
         {
             var ins = _mapper.Map<Instructor>(dto);
-            ins.UserType = TypeUser.Instructor;
+            ins.UserType = TypeUser.Instructor.ToString();
             _repo.Add(ins);
             _repo.Savechange();
 

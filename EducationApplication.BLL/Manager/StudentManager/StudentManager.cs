@@ -35,7 +35,7 @@ namespace EducationApplication.BLL.Manager.StudentManager
         public void AddStudentAsync(StudentAddDto dto)
         {
             var student = _mapper.Map<Student>(dto);
-            student.UserType = TypeUser.Student;
+            student.UserType = TypeUser.Student.ToString();
             _repo.Add(student);
             _repo.Savechange();
 

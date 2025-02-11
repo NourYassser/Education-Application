@@ -1,11 +1,10 @@
 ﻿using EducationApplication.DAL.Data.Model;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EducationApplication.DAL.Data.DbHelper
 {
-    public class EducationDbContext(DbContextOptions<EducationDbContext> options) : IdentityDbContext<IdentityUser>(options)
+    public class EducationDbContext(DbContextOptions<EducationDbContext> options) : IdentityDbContext<User>(options)
     {
         /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -14,10 +13,6 @@ namespace EducationApplication.DAL.Data.DbHelper
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<IdentityRole>().HasData(
-            new IdentityRole { Id = "1", Name = "Admin", NormalizedName = "ADMIN" },
-            new IdentityRole { Id = "2", Name = "Instructor", NormalizedName = "INSTRUCTOR" },
-            new IdentityRole { Id = "3", Name = "Student", NormalizedName = "STUDENT" });
 
             modelBuilder.Entity<AnswerResult>()
                         .HasQueryFilter(a => !a.IsDeleted);
@@ -62,7 +57,7 @@ namespace EducationApplication.DAL.Data.DbHelper
                         .HasOne(e => e.Course)
                         .WithMany(e => e.Enrollments)
                         .HasForeignKey(e => e.CourseId)
-                        .OnDelete(DeleteBehavior.NoAction); // Change to NO ACTION
+                        .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Enrollment>()
                         .HasOne(e => e.Student)
@@ -77,11 +72,10 @@ namespace EducationApplication.DAL.Data.DbHelper
             modelBuilder.Entity<ExamResult>()
                         .HasIndex(e => new { e.StudentId, e.ExamId })
                         .IsUnique();
-            /*var x = new Configuration();
-            x.Configure(builder);*/
         }
         //Users
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<User> User { get; set; }
         public DbSet<Instructor> Instructors { get; set; }
         public DbSet<Student> Students { get; set; }
 

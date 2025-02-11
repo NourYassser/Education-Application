@@ -5,7 +5,6 @@ namespace EducationApplication.DAL.Data.Model
 {
     public enum TypeUser
     {
-        Admin = 1,
         Instructor,
         Student
     }
@@ -25,21 +24,17 @@ namespace EducationApplication.DAL.Data.Model
     public class User : IdentityUser
     {
         [Range(5, 120)]
-        public int Age { get; set; }
-        public GenderType Gender { get; set; }
-        public string Address { get; set; }
-        public TypeUser UserType { get; set; }
+        public string UserType { get; set; }
         public bool IsDeleted { get; set; } = false;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
     public class Student : User
     {
-        public string? Grade { get; set; }
         public bool IsBanned { get; set; } = false;
         public ICollection<Enrollment> Enrollments = new HashSet<Enrollment>();
 
         //Student With Attempts
-        /*        public virtual ICollection<Attempts> Attempts { get; set; } = new HashSet<Attempts>();
-        */
+        /*public virtual ICollection<Attempts> Attempts { get; set; } = new HashSet<Attempts>();*/
     }
     public class Instructor : User
     {

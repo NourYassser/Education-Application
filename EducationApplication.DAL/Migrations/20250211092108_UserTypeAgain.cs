@@ -5,7 +5,7 @@
 namespace EducationApplication.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class FixedErrors : Migration
+    public partial class UserTypeAgain : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

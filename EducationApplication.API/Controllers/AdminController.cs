@@ -2,12 +2,14 @@
 using EducationApplication.BLL.Dtos.StudentDtos;
 using EducationApplication.BLL.Manager.InstructorManager;
 using EducationApplication.BLL.Manager.StudentManager;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EducationApplication.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class AdminController : ControllerBase
     {
         private readonly IinstructorManager _mngINS;
