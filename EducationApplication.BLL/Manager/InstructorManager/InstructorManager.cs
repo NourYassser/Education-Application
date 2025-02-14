@@ -54,7 +54,7 @@ namespace EducationApplication.BLL.Manager.InstructorManager
             var ins = _repo.GetInstructorById(Id);
             if (ins == null)
             {
-                throw new Exception("Student not found");
+                throw new Exception("Instructor not found");
             }
 
             ins.IsDeleted = true; // Soft delete
@@ -65,7 +65,7 @@ namespace EducationApplication.BLL.Manager.InstructorManager
             var ins = _repo.GetInstructorById(Id);
             if (ins == null)
             {
-                throw new Exception("Student not found");
+                throw new Exception("Instructor not found");
             }
 
             _repo.DeleteInstructor(int.Parse(ins.Id));

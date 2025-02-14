@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using EducationApplication.BLL.Dtos.CoursesDtos;
+using EducationApplication.BLL.Dtos.EnrollmentsDtos;
 using EducationApplication.BLL.Dtos.InstructorDtos;
 using EducationApplication.BLL.Dtos.StudentDtos;
 using EducationApplication.DAL.Data.Model;
@@ -9,17 +11,14 @@ namespace EducationApplication.BLL.AutoMapper
     {
         public MappingProfile()
         {
+            //Users Mapping
             CreateMap<Student, StudentReadDto>().ReverseMap();
             CreateMap<Student, StudentAddDto>().ReverseMap();
             CreateMap<Student, StudentUpdateDto>().ReverseMap();
 
-
-
-            /*CreateMap<InstrurctorUpdateDto, InstructorReadDto>().ReverseMap();*/
             CreateMap<Instructor, InstructorReadDto>().ReverseMap();
             CreateMap<Instructor, InstructorAddDto>().ReverseMap();
             CreateMap<Instructor, InstructorUpdateDto>().ReverseMap();
-            /*CreateMap<Instructor, InstructorStatusDto>().ReverseMap()*/
 
             CreateMap<Attempts, AttemptDetailsDto>();
             /*CreateMap<AnswerDto, Answers>().ReverseMap();
@@ -27,7 +26,14 @@ namespace EducationApplication.BLL.AutoMapper
             CreateMap<Student, StudentReadDto>().ReverseMap();
             CreateMap<Attempts, StudentAttemptDto>().ReverseMap();
 
-            /*CreateMap<Instructor, UpdateInstructorProfileDto>().ReverseMap();*/
+            //Courses Mapping
+            CreateMap<Course, CourseReadDto>().ReverseMap();
+            CreateMap<Course, CourseAddDto>().ReverseMap();
+            CreateMap<Course, CourseUpdateDto>().ReverseMap();
+
+            //Enrollment Mapping
+            CreateMap<Enrollment, EnrollmentsReadDto>().ReverseMap();
+            CreateMap<Enrollment, EnrollmentsAddDto>().ReverseMap();
         }
     }
 }

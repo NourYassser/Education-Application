@@ -1,11 +1,15 @@
 using System.Text;
 using EducationApplication.BLL.AutoMapper;
 using EducationApplication.BLL.Manager.Auth;
+using EducationApplication.BLL.Manager.CourseManager;
+using EducationApplication.BLL.Manager.EnrollmentsManager;
 using EducationApplication.BLL.Manager.InstructorManager;
 using EducationApplication.BLL.Manager.StudentManager;
 using EducationApplication.BLL.Middlewares;
 using EducationApplication.DAL.Data.DbHelper;
 using EducationApplication.DAL.Data.Model;
+using EducationApplication.DAL.Repos.CoursesRpo;
+using EducationApplication.DAL.Repos.EnrollmentRpo;
 using EducationApplication.DAL.Repos.InstructorRpo;
 using EducationApplication.DAL.Repos.StudentRpo;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -53,9 +57,16 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 builder.Services.AddScoped<IinstructorRpo, InstructorRpo>();
 builder.Services.AddScoped<IStudentRepo, StudentRepo>();
 
+builder.Services.AddScoped<ICourseRepo, CourseRepo>();
+builder.Services.AddScoped<IEnrollmentRepo, EnrollmentRepo>();
+
 //Registering Managers
 builder.Services.AddScoped<IinstructorManager, InstructorManager>();
 builder.Services.AddScoped<IStudentManager, StudentManager>();
+
+builder.Services.AddScoped<ICourseManager, CourseManager>();
+builder.Services.AddScoped<IEnrollmentsManager, EnrollmentsManager>();
+
 builder.Services.AddSingleton<IEmailSender<IdentityUser>, EmailSender>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
